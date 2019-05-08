@@ -18,8 +18,11 @@ LOGGER.info("Starting haruka...")
 #    LOGGER.error("You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting.")
 #    quit(1)
     
-
-from haruka.config import Development as Config
+ENV = bool(os.environ.get("ENV", "False"))
+if ENV:
+    from sample_config import Config
+else:
+    from haruka.config import Development as Config
 TOKEN = Config.API_KEY
 try:
     OWNER_ID = int(Config.OWNER_ID)
