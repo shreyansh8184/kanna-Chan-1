@@ -76,7 +76,7 @@ def import_data(bot: Bot, update):
 		# Check if backup is from self
 		try:
 			if str(bot.id) != str(data[str(chat.id)]['bot']):
-				return msg.reply_text("Backup from another bot that is not suggested might cause the problem, documents, photos, videos, audios, records might not work as it should be. However, You can still request a feature regarding this in @HarukaAyaGroup !")
+				return msg.reply_text("Backup from another bot that is not suggested might cause the problem, documents, photos, videos, audios, records might not work as it should be. However, You can still request a feature regarding this in @LucySupportChat !")
 		except:
 			pass
 		# Select data source
@@ -89,7 +89,7 @@ def import_data(bot: Bot, update):
 			for mod in DATA_IMPORT:
 				mod.__import_data__(str(chat.id), data)
 		except Exception:
-			msg.reply_text("An error occurred while recovering your data. The process failed. If you experience a problem with this, please ask in @HarukaAyaGroup . My owner and community will be happy to help. Also, bugs report makes me even better!\nThank you!")
+			msg.reply_text("An error occurred while recovering your data. The process failed. If you experience a problem with this, please ask in @LucySupportChat . My owner and community will be happy to help. Also, bugs report makes me even better!\nThank you!")
 
 			LOGGER.exception("Imprt for the chat %s with the name %s failed.", str(chat.id), str(chat.title))
 			return
@@ -281,7 +281,7 @@ def export_data(bot: Bot, update: Update, chat_data):
 		bot.sendMessage(MESSAGE_DUMP, "*Successfully imported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`".format(chat.title, chat_id, tgl), parse_mode=ParseMode.MARKDOWN)
 	except BadRequest:
 		pass
-	bot.sendDocument(current_chat_id, document=open('harukab{}.backup'.format(chat_id), 'rb'), caption="*Successfully imported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`\n\nNote: This `harukab` is specially made for notes.".format(chat.title, chat_id, tgl), timeout=360, reply_to_message_id=msg.message_id, parse_mode=ParseMode.MARKDOWN)
+	bot.sendDocument(current_chat_id, document=open('harukab{}.backup'.format(chat_id), 'rb'), caption="*Successfully imported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`\n\nNote: Keep in safe to import later.".format(chat.title, chat_id, tgl), timeout=360, reply_to_message_id=msg.message_id, parse_mode=ParseMode.MARKDOWN)
 	os.remove("harukab{}.backup".format(chat_id)) # Cleaning file
 
 
@@ -313,7 +313,7 @@ __help__ = """
 
  - /export: export group data, which will be exported are: rules, notes (documents, images, music, video, audio, voice, text, text buttons) \
 
-This module is still in beta! Report bugs in @HarukaAyaGroup !
+This module is still in beta! Report bugs in @LucySupportChat !
 """
 
 IMPORT_HANDLER = CommandHandler("import", import_data)
