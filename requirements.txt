@@ -1,3 +1,4 @@
+  
 future
 emoji
 requests
@@ -20,5 +21,14 @@ PyLyrics
 #AEX
 hurry.filesize
 #translator
-googletrans
 beautifulsoup4==4.6.3
+tldextract
+wikipedia
+googletrans
+alphabet_detector
+jikanpy
+psutil
+speedtest-cli>=2.0.2
+gTTS
+
+
