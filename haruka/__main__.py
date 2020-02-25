@@ -138,11 +138,10 @@ def send_start(bot, update):
     text = "Hey there! My name is Kanna Kobayashi- I'm here to help you manage your groups!\n\
 Click Help button to find out more about how to use me to my full potential.\n\n"
 
-    text += "Join [Binverse Group](https://t.me/Binverse1) ( @Binverse1 ) if you need any support or help\n\n\
-Follow [Binverse xD](https://t.me/Binverse) ( @binverse ) if you want to keep up with the news, updates and bot downtime!\n\n\
-Made with love by @Nitin181\n\nWant to add me to your group? [Click here!](t.me/wolverinexmen_Bot?startgroup=true)"
+    text += "Want to add me to your group? [Click here!](t.me/Kanna_Chan_Bot?startgroup=true)!\n\
+    Maintained by [this awesome person](https://t.me/Okay_retard).\n\n"
 
-    keyboard = [[InlineKeyboardButton(text="📢 Support Group", url="https://t.me/binverse1")]]
+    keyboard = [[InlineKeyboardButton(text="📢 Support Group", url="https://t.me/LucySupportChat")]]
     keyboard += [[InlineKeyboardButton(text="🛠 Control panel", callback_data="cntrl_panel_M")]]
     keyboard += [[InlineKeyboardButton(text="🇺🇸 Language", callback_data="set_lang_"), 
         InlineKeyboardButton(text="❔ Help", callback_data="help_back")]]
