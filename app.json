@@ -71,5 +71,13 @@
       "value": "CAADBQADfgADttzjKJWTC3CM9l78FgQ"
     }
   },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ]
   
 }
