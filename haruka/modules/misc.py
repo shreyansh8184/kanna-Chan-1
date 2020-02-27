@@ -159,7 +159,7 @@ def info(bot: Bot, update: Update, args: List[str]):
     if user.username:
         text += tld(chat.id, "\nUsername: @{}").format(html.escape(user.username))
 
-    text += tld(chat.id, "\nUser link: {}\n").format(mention_html(user.id, "link"))
+    text += tld(chat.id, "\nPermanent user link: {}").format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
         text += tld(chat.id, "\n\nAy, This guy is my owner. I would never do anything against him!")
@@ -177,11 +177,14 @@ def info(bot: Bot, update: Update, args: List[str]):
                         "That means I'm not allowed to ban/kick them.")
 
     for mod in USER_INFO:
-        mod_info = mod.__user_info__(chat.id).strip()
+        try:
+            mod_info = mod.__user_info__(user.id).strip()
+        except TypeError:
+            mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
             text += "\n\n" + mod_info
 
-    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 @run_async
