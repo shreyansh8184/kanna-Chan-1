@@ -117,7 +117,7 @@ def get_id(bot: Bot, update: Update, args: List[str]):
             user = bot.get_chat(user_id)
             update.effective_message.reply_text(tld(chat.id, "{}'s id: `{}`\nChat id: `{}`").format(escape_markdown(user.first_name), user.id, chat.id),
                                                 parse_mode=ParseMode.MARKDOWN)
-                                                    parse_mode=ParseMode.MARKDOWN)
+                                                    
 
                                                         
     else:
