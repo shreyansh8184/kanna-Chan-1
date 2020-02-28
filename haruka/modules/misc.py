@@ -125,6 +125,7 @@ def get_id(bot: Bot, update: Update, args: List[str]):
 
         else:
             user_id = extract_user(update.effective_message, args)
+            user = bot.get_chat(user_id)
             update.effective_message.reply_text(tld(chat.id, "Your id: {} \nChat id: {}").format(user.id, chat.id),
                                                 parse_mode=ParseMode.MARKDOWN)
 
