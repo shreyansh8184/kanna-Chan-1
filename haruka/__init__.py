@@ -56,8 +56,8 @@ if ENV:
     STRICT_ANTISPAM = bool(os.environ.get('STRICT_ANTISPAM', False))
     WORKERS = int(os.environ.get('WORKERS', 8))
     BAN_STICKER = os.environ.get('BAN_STICKER', 'CAADBQADTQEAAupFXico2ds1vUzopRYE')
-    STRICT_GMUTE = False
-    STRICT_GBAN = False
+    STRICT_GMUTE = bool(os.environ.get('STRICT_GMUTE', False))
+    STRICT_GBAN = bool(os.environ.get('STRICT_GBAN', False))
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
 
@@ -102,7 +102,8 @@ else:
     BAN_STICKER = Config.BAN_STICKER
     TEMPORARY_DATA = Config.TEMPORARY_DATA
     ALLOW_EXCL = Config.ALLOW_EXCL
-   
+    STRICT_GBAN = Config.STRICT_GBAN
+    STRICT_GMUTE = Config.STRICT_GMUTE
 
 SUDO_USERS.add(OWNER_ID)
 
