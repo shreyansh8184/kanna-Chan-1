@@ -15,7 +15,6 @@ from haruka.modules.sql import cleaner_sql as sql
 from haruka.modules.connection import connected
 
 from haruka.modules.translations.strings import tld
-from haruka.modules.helper_funcs.alternate import send_message
 
 
 @run_async
@@ -39,7 +38,7 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 		chat_name = dispatcher.bot.getChat(conn).title
 	else:
 		if update.effective_message.chat.type == "private":
-			send_message(update.effective_message, tld(update.effective_message, "You can do this command on the group, not on PM"))
+			bot.send_message(update.effective_message, tld(update.effective_message, "You can do this command on the group, not on PM"))
 			return ""
 		chat_id = update.effective_chat.id
 		chat_name = update.effective_message.chat.title
@@ -52,7 +51,7 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 				text = tld(update.effective_message, "The blue message eraser has been *deactivated* in *{}*.").format(chat_name)
 			else:
 				text = tld(update.effective_message, "The blue message eraser has been *deactivated*.")
-			send_message(update.effective_message, text, parse_mode="markdown")
+			bot.send_message(update.effective_message, text, parse_mode="markdown")
 
 		elif val == "yes" or val == "ya" or val == "on":
 			sql.set_cleanbt(chat_id, True)
@@ -60,12 +59,12 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 				text = tld(update.effective_message, "The blue message eraser has been *activated* in *{}*.").format(chat_name)
 			else:
 				text = tld(update.effective_message, "The blue message eraser has been *activated*.")
-			send_message(update.effective_message, text, parse_mode="markdown")
+			bot.send_message(update.effective_message, text, parse_mode="markdown")
 
 		else:
-			send_message(update.effective_message, tld(update.effective_message, "Unknown argument - please use 'yes', or 'no'."))
+			bot.send_message(update.effective_message, tld(update.effective_message, "Unknown argument - please use 'yes', or 'no'."))
 	else:
-		send_message(update.effective_message, tld(update.effective_message, "The setting for the blue message eraser is currently on {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
+		bot.send_message(update.effective_message, tld(update.effective_message, "The setting for the blue message eraser is currently on {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
 
 
 __help__ = """
