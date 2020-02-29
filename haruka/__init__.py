@@ -60,7 +60,7 @@ if ENV:
     STRICT_GBAN = bool(os.environ.get('STRICT_GBAN', False))
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
-    spamfilters = int(os.environ.get('spamfilters', None))
+    spamfilters = int(os.environ.get('spamfilters'))
     
 else:
     from haruka.config import Development as Config
