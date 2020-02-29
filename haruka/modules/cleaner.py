@@ -28,7 +28,7 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 	chat = update.effective_chat  # type: Optional[Chat]
 	user = update.effective_user  # type: Optional[User]
 	message = update.effective_message  # type: Optional[Message]
-	spam = spamfilters(update.effective_message.text, update.effective_message.from_user.id, update.effective_chat.id, update.effective_message)
+	spam = True
 	if spam == True:
 		return
 
