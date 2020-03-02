@@ -41,5 +41,5 @@ KHILADI_HANDLER = DisableAbleCommandHandler("khiladi", khiladi)
 AVN_HANDLER = DisableAbleCommandHandler("avn", avn)
 
 dispatcher.add_handler(AVN_HANDLER)
-diapatcher.add_handler(BOOBS_HANDLER)
+dispatcher.add_handler(BOOBS_HANDLER)
 dispatcher.add_handler(KHILADI_HANDLER)
