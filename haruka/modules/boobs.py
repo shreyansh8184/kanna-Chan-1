@@ -34,7 +34,7 @@ def avn(bot: Bot, update: Update):
       "https://telegra.ph//file/ff0a5befc03599643be59.jpg"
     )
     avn1 = random.choice(avn1)
-    update.message.reply_photo(avn)
+    update.message.reply_photo(avn1)
 		
 BOOBS_HANDLER = DisableAbleCommandHandler("boobs", boobs, filters=CustomFilters.sudo_filter)
 KHILADI_HANDLER = DisableAbleCommandHandler("khiladi", khiladi)
