@@ -28,11 +28,11 @@ def khiladi(bot: Bot, update: Update):
     update.message.reply_photo(final1)
 
 def avn(bot: Bot, update: Update):
-    avengers = (
+    avengers = [
       "https://telegra.ph//file/8201c6a5363061b4f0196.jpg"
       "https://telegra.ph//file/8a525ec13114d1fa62e5d.jpg"
       "https://telegra.ph//file/ff0a5befc03599643be59.jpg"
-    )
+    ]
     avn1 = random.choice(avengers)
     update.message.reply_photo(avn1)
 		
