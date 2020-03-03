@@ -71,7 +71,7 @@ def rtt(bot: Bot, update: Update):
         
 @run_async
 def ping(bot: Bot, update: Update):
-    
+    test = speedtest.Speedtest()
     test.results.share()
     result = test.results.dict()
     update.effective_message.reply_text("🏓Pong! \n⏰Reply Took: {}").format(result['ping'])
