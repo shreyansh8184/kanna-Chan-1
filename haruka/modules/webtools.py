@@ -71,53 +71,10 @@ def rtt(bot: Bot, update: Update):
         
 @run_async
 def ping(bot: Bot, update: Update):
-    message = update.effective_message
-    parsing = extract_text(message).split(' ')
-    if(len(parsing) < 2):
-        message.reply_text("Give me an address to ping!")
-        return
-    elif(len(parsing)>2):
-        message.reply_text("Too many arguments!")
-        return
-    dns = (parsing)[1]
-    out = ""
-    under = False
-    if os.name == 'nt':
-        try:
-            output = subprocess.check_output("ping -n 1 " + dns + " | findstr time*", shell=True).decode()
-        except:
-            message.reply_text("There was a problem parsing the IP/Hostname")
-            return
-        outS = output.splitlines()
-        out = outS[0]
-    else:
-        try:
-            out = subprocess.check_output("ping -c 1 " + dns + " | grep time=", shell=True).decode()
-        except:
-            message.reply_text("There was a problem parsing the IP/Hostname")
-            return
-    splitOut = out.split(' ')
-    stringtocut = ""
-    for line in splitOut:
-        if(line.startswith('time=') or line.startswith('time<')):
-            stringtocut=line
-            break
-    newstra=stringtocut.split('=')
-    if len(newstra) == 1:
-        under = True
-        newstra=stringtocut.split('<')
-    newstr=""
-    if os.name == 'nt':
-        newstr=newstra[1].split('ms')
-    else:
-        newstr=newstra[1].split(' ') #redundant split, but to try and not break windows ping
-    ping_time = float(newstr[0])
-    if os.name == 'nt' and under:
-        update.effective_message.reply_text(" Ping speed of " +dns+" is <{}ms".format(ping_time))
-    else:
-        update.effective_message.reply_text(" Ping speed of " +dns+": {}ms".format(ping_time))
     
-    
+    test.results.share()
+    result = test.results.dict()
+    update.effective_message.reply_text("🏓Pong! \n⏰Reply Took: {}").format(result['ping'])
 
 @run_async
 def speedtst(bot: Bot, update: Update):
