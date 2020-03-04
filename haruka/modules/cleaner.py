@@ -6,16 +6,16 @@ from telegram.error import BadRequest
 from telegram.ext import Filters, MessageHandler, CommandHandler, run_async
 from telegram.utils.helpers import mention_html, escape_markdown
 
-from emilia import dispatcher, spamfilters
-from emilia.modules.helper_funcs.chat_status import is_user_admin, user_admin, can_restrict
-from emilia.modules.helper_funcs.string_handling import extract_time
-from emilia.modules.disable import DisableAbleCommandHandler
-from emilia.modules.log_channel import loggable
-from emilia.modules.sql import cleaner_sql as sql
-from emilia.modules.connection import connected
+from haruka import dispatcher, spamfilters
+from haruka.modules.helper_funcs.chat_status import is_user_admin, user_admin, can_restrict
+from haruka.modules.helper_funcs.string_handling import extract_time
+from haruka.modules.disable import DisableAbleCommandHandler
+from haruka.modules.log_channel import loggable
+from haruka.modules.sql import cleaner_sql as sql
+from haruka.modules.connection import connected
 
-from emilia.modules.languages import tl
-from emilia.modules.helper_funcs.alternate import send_message
+from haruka.modules.languages import tl
+from haruka.modules.helper_funcs.alternate import send_message
 
 
 @run_async
@@ -39,7 +39,7 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 		chat_name = dispatcher.bot.getChat(conn).title
 	else:
 		if update.effective_message.chat.type == "private":
-			send_message(update.effective_message, tl(update.effective_message, "Anda bisa lakukan command ini pada grup, bukan pada PM"))
+			send_message(update.effective_message, tl(update.effective_message, "You can do this command in the group, not the PM"))
 			return ""
 		chat_id = update.effective_chat.id
 		chat_name = update.effective_message.chat.title
@@ -49,23 +49,23 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 		if val == "off" or val == "no":
 			sql.set_cleanbt(chat_id, False)
 			if conn:
-				text = tl(update.effective_message, "Penghapus pesan biru telah di *non-aktifka*n di *{}*.").format(chat_name)
+				text = tl(update.effective_message, "The message eraser blue has been *deactivated* n in *{}*.").format(chat_name)
 			else:
-				text = tl(update.effective_message, "Penghapus pesan biru telah di *non-aktifkan*.")
+				text = tl(update.effective_message, "The blue message eraser has been *deactivated*.")
 			send_message(update.effective_message, text, parse_mode="markdown")
 
 		elif val == "yes" or val == "ya" or val == "on":
 			sql.set_cleanbt(chat_id, True)
 			if conn:
-				text = tl(update.effective_message, "Penghapus pesan biru telah di *aktifkan* di *{}*.").format(chat_name)
+				text = tl(update.effective_message, "The blue message eraser has been *activated * on *{}*.").format(chat_name)
 			else:
-				text = tl(update.effective_message, "Penghapus pesan biru telah di *aktifkan*.")
+				text = tl(update.effective_message, "The blue message eraser has been *activated*.")
 			send_message(update.effective_message, text, parse_mode="markdown")
 
 		else:
-			send_message(update.effective_message, tl(update.effective_message, "Argumen tidak dikenal - harap gunakan 'yes', atau 'no'."))
+			send_message(update.effective_message, tl(update.effective_message, "Unknown argument - please use 'yes', or 'no'."))
 	else:
-		send_message(update.effective_message, tl(update.effective_message, "Pengaturan untuk penghapus pesan biru saat ini di {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
+		send_message(update.effective_message, tl(update.effective_message, "The setting for the blue message eraser is currently on in {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
 
 
 __help__ = "cleaner_help"
