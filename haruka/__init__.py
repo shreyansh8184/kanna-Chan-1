@@ -38,11 +38,7 @@ if ENV:
     except ValueError:
         raise Exception("Your support users list does not contain valid integers.")
 
-    try:
-        SPAMMERS = set(int(x) for x in os.environ.get("SPAMMERS", "").split())
-    except ValueError:
-	raise Exception("Your spammers users list does not contain valid integers.")
-
+    
 
     try:
         WHITELIST_USERS = set(int(x) for x in os.environ.get("WHITELIST_USERS", "").split())
@@ -53,6 +49,7 @@ if ENV:
     URL = os.environ.get('URL', "")  # Does not contain token
     PORT = int(os.environ.get('PORT', 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
+    SPAMMERS = int(os.environ.get('SPAMMERS', ''))
 
     DB_URI = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
