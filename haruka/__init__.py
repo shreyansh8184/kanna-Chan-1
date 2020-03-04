@@ -60,7 +60,7 @@ if ENV:
     STRICT_GBAN = bool(os.environ.get('STRICT_GBAN', False))
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
-    spamfilters = os.environ.get('spamfilters', True)
+    
     
 else:
     from haruka.config import Development as Config
@@ -105,7 +105,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     STRICT_GBAN = Config.STRICT_GBAN
     STRICT_GMUTE = Config.STRICT_GMUTE
-    spamfilters = Config.spamfilters
+    
 
 SUDO_USERS.add(OWNER_ID)
 
