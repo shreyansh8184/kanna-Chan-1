@@ -113,7 +113,6 @@ def user_admin(func):
     @wraps(func)
     def is_admin(bot: Bot, update: Update, *args, **kwargs):
         user = update.effective_user  # type: Optional[User]
-        chat = update.effective_chat  # type: Optional[Chat]
         if user and is_user_admin(update.effective_chat, user.id):
             return func(bot, update, *args, **kwargs)
 
@@ -123,8 +122,8 @@ def user_admin(func):
         elif DEL_CMDS and " " not in update.effective_message.text:
             update.effective_message.delete()
 
-        elif (admin_sql.command_reaction(chat.id) == True):
-            update.effective_message.reply_text("Who dis non-admin telling me what to do?")
+        else:
+            update.effective_message.reply_text(languages.tl(update.effective_message, "Who is this non admin telling me what to do?"))
 
     return is_admin
 
