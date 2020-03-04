@@ -18,12 +18,12 @@ LOADED_LANGS_ID = []
 LANGS_TEXT = {}
 FUNC_LANG = {}
 
-for x in os.listdir('emilia/modules/langs'):
-	if os.path.isdir('emilia/modules/langs/'+x):
+for x in os.listdir('haruka/modules/langs'):
+	if os.path.isdir('haruka/modules/langs/'+x):
 		continue
 	x = x.replace('.py', '')
 	LOADED_LANGS_ID.append(x)
-	imported_langs = importlib.import_module("emilia.modules.langs." + x)
+	imported_langs = importlib.import_module("haruka.modules.langs." + x)
 	FUNC_LANG[x] = imported_langs
 	LANGS_TEXT[x] = imported_langs.__lang__
 
@@ -60,13 +60,13 @@ def tl(message, text):
 		get = getattr(FUNC_LANG['id'], 'id')
 		if text in tuple(get):
 			return get.get(text)
-		if text in ("RUN_STRINGS", "SLAP_TEMPLATES", "ITEMS", "THROW", "HIT", "RAMALAN_STRINGS", "RAMALAN_FIRST"):
+		if text in ("RUN_STRINGS", "SLAP_TEMPLATES", "ITEMS", "THROW", "HIT"):
 			runstr = getattr(FUNC_LANG['id'], text)
 			return runstr
 		return text
 	elif str(getlang) in LOADED_LANGS_ID:
 		func = getattr(FUNC_LANG[getlang], getlang)
-		if text in ("RUN_STRINGS", "SLAP_TEMPLATES", "ITEMS", "THROW", "HIT", "RAMALAN_STRINGS", "RAMALAN_FIRST"):
+		if text in ("RUN_STRINGS", "SLAP_TEMPLATES", "ITEMS", "THROW", "HIT"):
 			runstr = getattr(FUNC_LANG[getlang], text)
 			return runstr
 		langtxt = func.get(text)
@@ -140,7 +140,7 @@ def button(bot, update):
 
 __help__ = "language_help"
 
-__mod_name__ = "Languages"
+__mod_name__ = "Language"
 
 SETLANG_HANDLER = DisableAbleCommandHandler("setlang", set_language)
 CALLBACK_QUERY_HANDLER = CallbackQueryHandler(button, pattern=r"set_lang")
