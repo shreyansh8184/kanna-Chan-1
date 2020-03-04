@@ -71,12 +71,11 @@ def rtt(bot: Bot, update: Update):
         
 @run_async
 def ping(bot: Bot, update: Update):
-    test = speedtest.Speedtest()
-    test.get_best_server()
-    test.download()
-    test.results.share()
-    result = test.results.dict()
-    update.effective_message.reply_text("🏓Pong! \n⏰Reply Took: {}").format(result['ping'])
+    start_time = time.time()
+    requests.get('https://api.telegram.org')
+    end_time = time.time()
+    ping_time = float(end_time - start_time)*1000
+    update.effective_message.reply_text("  🏓Pong! \n⏰Reply Took : {}ms".format(ping_time))
 
 @run_async
 def speedtst(bot: Bot, update: Update):
