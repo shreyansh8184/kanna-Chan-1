@@ -9,7 +9,7 @@ from telegram import error
 
 from haruka import DEL_CMDS, SUDO_USERS, WHITELIST_USERS
 
-from haruka.modules import languages
+from haruka.modules import language
 
 
 def send_message(message, text,  *args,**kwargs):
