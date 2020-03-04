@@ -108,7 +108,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     STRICT_GBAN = Config.STRICT_GBAN
     STRICT_GMUTE = Config.STRICT_GMUTE
-    
+    SPAMMERS = Config.SPAMMERS
 
 SUDO_USERS.add(OWNER_ID)
 
