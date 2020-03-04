@@ -14,7 +14,7 @@ from haruka.modules.log_channel import loggable
 from haruka.modules.sql import cleaner_sql as sql
 from haruka.modules.connection import connected
 
-from haruka.modules.languages import tl
+from haruka.modules.language import tl
 from haruka.modules.helper_funcs.alternate import send_message
 
 
