@@ -49,23 +49,23 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 		if val == "off" or val == "no":
 			sql.set_cleanbt(chat_id, False)
 			if conn:
-				text = tl(update.effective_message, "The message eraser blue has been *deactivated* n in *{}*.").format(chat_name)
+				text = tl(message.reply_text, "The message eraser blue has been *deactivated* n in *{}*.").format(chat_name)
 			else:
-				text = tl(update.effective_message, "The blue message eraser has been *deactivated*.")
+				text = tl(message.reply_text, "The blue message eraser has been *deactivated*.")
 			send_message(update.effective_message, text, parse_mode="markdown")
 
 		elif val == "yes" or val == "ya" or val == "on":
 			sql.set_cleanbt(chat_id, True)
 			if conn:
-				text = tl(update.effective_message, "The blue message eraser has been *activated * on *{}*.").format(chat_name)
+				text = tl(message.reply_text, "The blue message eraser has been *activated * on *{}*.").format(chat_name)
 			else:
-				text = tl(update.effective_message, "The blue message eraser has been *activated*.")
+				text = tl(message.reply_text, "The blue message eraser has been *activated*.")
 			send_message(update.effective_message, text, parse_mode="markdown")
 
 		else:
-			send_message(update.effective_message, tl(update.effective_message, "Unknown argument - please use 'yes', or 'no'."))
+			send_message(update.effective_message, tl(message.reply_text, "Unknown argument - please use 'yes', or 'no'."))
 	else:
-		send_message(update.effective_message, tl(update.effective_message, "The setting for the blue message eraser is currently on in {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
+		send_message(update.effective_message, tl(message.reply_text, "The setting for the blue message eraser is currently on in {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
 
 
 __help__ = "cleaner_help"
