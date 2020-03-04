@@ -7,12 +7,12 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, User
 from telegram import Message, Chat, Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async, DispatcherHandlerStop, MessageHandler, Filters, CallbackQueryHandler
-from emilia import dispatcher, spamfilters, LOGGER
-from emilia.modules.disable import DisableAbleCommandHandler
-from emilia.modules.helper_funcs.chat_status import user_admin_no_reply, user_admin
+from haruka import dispatcher, spamfilters, LOGGER
+from haruka.modules.disable import DisableAbleCommandHandler
+from haruka.modules.helper_funcs.chat_status import user_admin_no_reply, user_admin
 
-from emilia.modules.sql import languages_sql as sql
-from emilia.modules.helper_funcs.alternate import send_message
+from haruka.modules.sql import languages_sql as sql
+from haruka.modules.helper_funcs.alternate import send_message
 
 LOADED_LANGS_ID = []
 LANGS_TEXT = {}
