@@ -43,29 +43,30 @@ def set_blue_text_must_click(bot: Bot, update: Update, args):
 			return ""
 		chat_id = update.effective_chat.id
 		chat_name = update.effective_message.chat.title
+                chat = update.effective_chat
 
 	if len(args) >= 1:
 		val = args[0].lower()
 		if val == "off" or val == "no":
 			sql.set_cleanbt(chat_id, False)
 			if conn:
-				text = tl(message.reply_text, "The message eraser blue has been *deactivated* n in *{}*.").format(chat_name)
+				bot.send_message(chat.id, "The message eraser blue has been *deactivated* n in *{}*.").format(chat_name)
 			else:
-				text = tl(message.reply_text, "The blue message eraser has been *deactivated*.")
-			send_message(update.effective_message, text, parse_mode="markdown")
+				bot.send_message(chat.id, "The blue message eraser has been *deactivated*.")
+			
 
 		elif val == "yes" or val == "ya" or val == "on":
 			sql.set_cleanbt(chat_id, True)
 			if conn:
-				text = tl(message.reply_text, "The blue message eraser has been *activated * on *{}*.").format(chat_name)
+				bot.send_message(chat.id, "The blue message eraser has been *activated * on *{}*.").format(chat_name)
 			else:
-				text = tl(message.reply_text, "The blue message eraser has been *activated*.")
-			send_message(update.effective_message, text, parse_mode="markdown")
+				bot.send_message(chat.id, "The blue message eraser has been *activated*.")
+			
 
 		else:
-			send_message(update.effective_message, tl(message.reply_text, "Unknown argument - please use 'yes', or 'no'."))
+			bot.send_message(chat.id, "Unknown argument - please use 'yes', or 'no'."))
 	else:
-		send_message(update.effective_message, tl(message.reply_text, "The setting for the blue message eraser is currently on in {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
+		bot.send_message(chat.id, "The setting for the blue message eraser is currently on in {}: *{}*").format(chat_name, "Enabled" if sql.is_enable(chat_id) else "Disabled"), parse_mode="markdown")
 
 
 __help__ = "cleaner_help"
