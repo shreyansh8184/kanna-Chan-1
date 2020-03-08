@@ -100,13 +100,13 @@ def new_member(bot: Bot, update: Update):
         for new_mem in new_members:
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
-                bot.send_message(chat.id, "Oh, Genos? Let's get this moving.")
+                bot.send_message(chat.id, "Hey master, welcome😁.")
                 continue
 
             # Give start information when add bot to group
-            elif new_mem.id == 1002584093:
+            elif new_mem.id == 1017485984:
                   bot.send_message(
-                      636314540,
+                      919262859,
                      "I have been added to {} with ID: <pre>{}</pre>".format(chat.title, chat.id),
                      parse_mode=ParseMode.HTML
                   )               
