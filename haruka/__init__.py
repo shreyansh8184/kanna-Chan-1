@@ -63,7 +63,7 @@ if ENV:
     STRICT_GBAN = bool(os.environ.get('STRICT_GBAN', False))
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
-    
+    GBAN_LOGS = os.environ.get('GBAN_LOGS', "")
     
 else:
     from haruka.config import Development as Config
@@ -109,6 +109,7 @@ else:
     STRICT_GBAN = Config.STRICT_GBAN
     STRICT_GMUTE = Config.STRICT_GMUTE
     SPAMMERS = Config.SPAMMERS
+    GBAN_LOGS = Config.GBAN_LOGS
 
 SUDO_USERS.add(OWNER_ID)
 
