@@ -33,6 +33,7 @@ class Config(object):
     BAN_STICKER = 'CAADBQADTQEAAupFXico2ds1vUzopRYE'  # banhammer marie sticker
     ALLOW_EXCL = False  # Allow ! commands as well as /
     SPAMMERS = ""
+    GBAN_LOGS = ""
 
 class Production(Config):
     LOGGER = False
