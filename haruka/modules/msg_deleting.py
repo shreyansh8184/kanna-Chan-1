@@ -53,7 +53,7 @@ def purge(bot: Bot, update: Update, args: List[str]) -> str:
 
             purge = bot.send_message(chat.id, tld(chat.id, "Purge complete."))
             messageId = purge['message_id']
-            bot.delete_message((chat.id, {})).format(messageId)
+            bot.delete_message((chat.id, purge['message_id']))
             return "<b>{}:</b>" \
                    "\n#PURGE" \
                    "\n<b>Admin:</b> {}" \
