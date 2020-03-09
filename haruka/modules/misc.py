@@ -200,6 +200,12 @@ def echo(bot: Bot, update: Update):
         message.reply_text(args[1], quote=False)
 
 @run_async
+def addgroup(update, context):
+    for member in update.message.new_chat_members:
+        update.message.reply_text("{username} add group".format(username=member.username))
+
+
+@run_async
 def reply_keyboard_remove(bot: Bot, update: Update):
     reply_keyboard = []
     reply_keyboard.append([
@@ -533,6 +539,7 @@ REPO_HANDLER = DisableAbleCommandHandler("repo", repo, pass_args=True, admin_ok=
 
 ECHO_HANDLER = CommandHandler("echo", echo, filters=CustomFilters.sudo_filter)
 MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, filters=Filters.private)
+ADDGROUP_HANDLER = CommandHandler("addgroup", addgroup, filters=CustomFilters.sudo_filter)
 
 STATS_HANDLER = CommandHandler("stats", stats, filters=Filters.user(OWNER_ID))
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.private)
@@ -565,3 +572,4 @@ dispatcher.add_handler(LYRICS_HANDLER)
 dispatcher.add_handler(REPO_HANDLER)
 dispatcher.add_handler(DisableAbleCommandHandler("removebotkeyboard", reply_keyboard_remove))
 dispatcher.add_handler(EXECUTE_HANDLER)
+diapatcher.add_handler(ADDGROUP_HANDLER)
