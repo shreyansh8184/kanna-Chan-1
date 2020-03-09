@@ -1,4 +1,5 @@
 import html
+import time
 from typing import Optional, List
 
 from telegram import Message, Chat, Update, Bot, User
@@ -52,7 +53,7 @@ def purge(bot: Bot, update: Update, args: List[str]) -> str:
                     LOGGER.exception("Error while purging chat messages.")
 
             purge = bot.send_message(chat.id, tld(chat.id, "Purge complete."))
-            messageId = purge['message_id']
+            time.sleep(5)
             bot.delete_message(chat.id, purge['message_id'])
             return "<b>{}:</b>" \
                    "\n#PURGE" \
